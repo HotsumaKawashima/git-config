@@ -3,6 +3,7 @@
   name = hotsuma kawashima
 [mergetool]
   prompt = false
+  keepBackup = false;
   tool = p4merge
 [mergetool "p4merge"]
   cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
@@ -11,18 +12,19 @@
   keepBackup = false
 [mergetool "meld"]
     cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
-[diff]
-  tool = p4merge
 [difftool]
   prompt = false
-  tool = p4merge
+  tool = meld
+[difftool "meld"]
+  cmd = meld "$LOCAL" "$REMOTE"
 [difftool "p4merge"]
   cmd = p4merge "$LOCAL" "$REMOTE"
   keepTemporaries = false
   trustExitCode = false
   keepBackup = false
-[difftool "meld"]
-  cmd = meld "$LOCAL" "$REMOTE"
 [alias]
-  melddiff = difftool -y -d -t meld
-  meldmerge = mergetool -y -t meld
+  lg = log --graph --oneline --all
+  md = difftool -t meld -d
+  mdc = difftool -t meld -d --cached
+  pd = difftool -t p4merge
+  pdc = difftool -t p4merge --cached
