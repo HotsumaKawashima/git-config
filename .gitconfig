@@ -14,17 +14,20 @@
     cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
 [difftool]
   prompt = false
-  tool = meld
+  tool = WinMerge
 [difftool "meld"]
   cmd = meld "$LOCAL" "$REMOTE"
 [difftool "p4merge"]
-  cmd = p4merge "$LOCAL" "$REMOTE"
+  cmd = \"C:/Program Files/Perforce/p4merge.exe\" "$LOCAL" "$REMOTE"
   keepTemporaries = false
   trustExitCode = false
   keepBackup = false
+[difftool "WinMerge"]
+  path = C:/Program Files (x86)/WinMerge/WinMergeU.exe
+  cmd = \"C:/Program Files (x86)/WinMerge/WinMergeU.exe\" -f \"*.*\" -e -u -r \"$LOCAL\" \"$REMOTE\"
 [alias]
   lg = log --graph --oneline --all
-  md = difftool -t meld -d
-  mdc = difftool -t meld -d --cached
   pd = difftool -t p4merge
   pdc = difftool -t p4merge --cached
+  wd = difftool -t WinMerge -d
+  wdc = difftool -t WinMerge -d --cached
