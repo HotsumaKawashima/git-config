@@ -1,12 +1,16 @@
 [user]
   email = hkawashimajob1992@gmail.com
   name = hotsuma kawashima
+[core]
+  editor = vi
+[merge]
+  tool = p4merge
 [mergetool]
   prompt = false
   keepBackup = false;
   tool = p4merge
 [mergetool "p4merge"]
-  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  cmd = \"C:/Program Files/Perforce/p4merge.exe\" -le 'unix' -C 'utf8' "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
   keepTemporaries = false
   trustExitCode = false
   keepBackup = false
@@ -18,7 +22,7 @@
 [difftool "meld"]
   cmd = meld "$LOCAL" "$REMOTE"
 [difftool "p4merge"]
-  cmd = \"C:/Program Files/Perforce/p4merge.exe\" "$LOCAL" "$REMOTE"
+  cmd = \"C:/Program Files/Perforce/p4merge.exe\" -le 'unix' -C 'utf8' "$LOCAL" "$REMOTE"
   keepTemporaries = false
   trustExitCode = false
   keepBackup = false
